@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>ZHm Forum</title>
+</head>
+<body>
+<h1>ZHm Forum 💬</h1>
+<ul id="messages"></ul>
+
+<script>
+fetch('messages.json')
+  .then(res => res.json())
+  .then(data => {
+    const list = document.getElementById('messages');
+    data.forEach(msg => {
+      const li = document.createElement('li');
+      li.textContent = `${msg.user}: ${msg.text}`;
+      list.appendChild(li);
+    });
+  });
+</script>
+</body>
+</html>
